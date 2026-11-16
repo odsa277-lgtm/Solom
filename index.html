@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shahmat va Shashka</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #222; font-family: system-ui, sans-serif; }
+  .bar { display: flex; height: 52px; }
+  .tab { flex: 1; border: 0; font-size: 18px; font-weight: 700; cursor: pointer; }
+  .tab.white { background: #fff; color: #000; }
+  .tab.black { background: #000; color: #fff; }
+  .tab.active { box-shadow: inset 0 -6px 0 #e0a800; }
+  .frame { width: 100%; height: calc(100% - 52px); border: 0; display: none; background: #fff; }
+  .frame.show { display: block; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <button class="tab white active" data-t="chess">♔ Shahmat (oq)</button>
+  <button class="tab black" data-t="checkers">⛀ Shashka (qora)</button>
+</div>
+<iframe id="chess" class="frame show" src="https://odsa277-lgtm.github.io/12/" allow="clipboard-write"></iframe>
+<iframe id="checkers" class="frame" src="https://odsa277-lgtm.github.io/O/" allow="clipboard-write"></iframe>
+<script>
+  document.querySelectorAll('.tab').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.tab').forEach(function (x) { x.classList.toggle('active', x === b); });
+      document.querySelectorAll('.frame').forEach(function (f) { f.classList.toggle('show', f.id === b.dataset.t); });
+    });
+  });
+</script>
+</body>
+</html>
